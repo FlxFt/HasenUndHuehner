@@ -1,0 +1,40 @@
+static void Main(string[] args)
+		{
+			UInt32 anzTiere = 0;
+			UInt32 anzHuehner = 0;
+			UInt32 anzHasen = 0;
+			UInt32 anzBeine = 0;
+			do
+			{
+				while (true)
+				{
+					try
+					{
+						Console.WriteLine("Geben Sie die Anzahl Tiere ein.");
+						anzTiere = UInt32.Parse(Console.ReadLine());
+						Console.WriteLine("Geben Sie die Anzahl Beine ein.");
+						anzBeine = UInt32.Parse(Console.ReadLine());
+						break;
+					}
+					catch (Exception ex)
+					{
+						Console.WriteLine("Bitte geben Sie eine positive Zahl ein.");
+					}
+				}
+				for (UInt32 i = 0; i <= anzTiere; i++)
+				{
+					anzHuehner = i;
+					anzHasen = ((anzBeine - (anzHuehner * 2)) / 4);
+					if (anzHuehner + anzHasen == anzTiere && (anzHuehner * 2) + (anzHasen * 4) == anzBeine)
+					{
+						Console.WriteLine("Es hat " + anzHasen + " Hasen und " + anzHuehner + " Hühner.");
+						break;
+					}
+				}
+				if (anzHuehner + anzHasen != anzTiere || (anzHuehner * 2) + (anzHasen * 4) != anzBeine)
+				{
+					Console.WriteLine("Die Zahlen, die Sie eingegeben haben sind unmögich.");
+				}
+				Console.WriteLine("Nochmals? J/n");
+			} while (Console.ReadLine().ToLower() == "j");
+		}
